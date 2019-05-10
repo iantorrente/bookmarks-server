@@ -53,7 +53,10 @@ bookmarksRouter
   .route('/bookmarks/:id')
   .get((req, res) => {
     const { id } = req.params;
-    const bookmark = bookmarks.find(bm => bm.id == id);
+    console.log(`id is ${id}`);
+    const bookmark = bookmarks.find(bm => bm.id === id);
+    console.log(`bookmark: ${bookmark}`);
+    console.log(bookmarks[bookmark]);
 
     if (!bookmark) {
       logger.error(`Bookmark with id ${id} not found.`);
@@ -67,9 +70,9 @@ bookmarksRouter
   .delete((req, res) => {
     const { id } = req.params;
 
-    const bookmarkIndex = bookmarks.find(bm => bm.id == id);
+    const bookmarkIndex = bookmarks.findIndex(bm => bm.id === id);
 
-    if (bookmarkIndex == -1) {
+    if (bookmarkIndex === -1) {
       logger.error(`List with id ${id} not found.`);
       return res
         .status(400)
