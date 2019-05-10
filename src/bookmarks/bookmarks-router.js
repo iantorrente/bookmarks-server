@@ -17,7 +17,7 @@ bookmarksRouter
 
     //check if the POST has a book name
     if (!bookName) {
-      logger.erro(`Book name is required`);
+      logger.error(`Book name is required`);
       return res
         .status(400)
         .send('Invalid data');
@@ -56,7 +56,7 @@ bookmarksRouter
     const bookmark = bookmarks.find(bm => bm.id == id);
 
     if (!bookmark) {
-      logger.erro(`Bookmark with id ${id} not found.`);
+      logger.error(`Bookmark with id ${id} not found.`);
       return res
         .status(400)
         .send('Bookmark not found');
@@ -70,7 +70,7 @@ bookmarksRouter
     const bookmarkIndex = bookmarks.find(bm => bm.id == id);
 
     if (bookmarkIndex == -1) {
-      logger.erro(`List with id ${id} not found.`);
+      logger.error(`List with id ${id} not found.`);
       return res
         .status(400)
         .send('Not found');
